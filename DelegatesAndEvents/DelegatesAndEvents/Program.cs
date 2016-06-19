@@ -13,6 +13,28 @@ namespace DelegatesAndEvents
     {
         static void Main(string[] args)
         {
+            WorkPerformedHandler del1 = new WorkPerformedHandler(WorkPerformed1);
+            WorkPerformedHandler del2 = new WorkPerformedHandler(WorkPerformed2);
+
+            DoWork(del2);
+            Console.Read();
+
+        }
+
+        static void DoWork(WorkPerformedHandler del)
+        {
+            del(5, WorkType.GoToMeetings);
+        }
+        
+
+        static void WorkPerformed1(int hours, WorkType work)
+        {
+            Console.WriteLine("WorkPerformed1 Called " + hours.ToString());
+        }
+
+        static void WorkPerformed2(int hours, WorkType work)
+        {
+            Console.WriteLine("WorkPerformed2 Called " + hours.ToString());
         }
     }
 
